@@ -1,14 +1,33 @@
 @extends('layouts.main')
 
 @section('content')
-<h1>the Comics</h1>
-<div class="container d-flex flex-wrap justify-content-center">
-   @foreach ($comics as $comic)
-   <div class="card w-25 px-1">
-       <h4>{{ $comic->title }}</h4>
-       <img class="w-100" src="{{ $comic->image }}" alt="">
-       <p>{{ $comic->type}}</p>
-   </div>
-   @endforeach
+<h1 class="text-center py-2">the Comics</h1>
+<div class="container d-flex justify-content-center">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Tipologia</th>
+              <th scope="col">Gestisci</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($comics as $comic)
+            <tr>
+              <th scope="row">{{$comic->id}}</th>
+              <td>{{$comic->title}}</td>
+              <td>{{$comic->type}}</td>
+              <td>
+                <a href="#" class="btn btn-primary">Mostra</a>
+                <a href="#" class="btn btn-warning">Modifica</a>
+                <a href="#" class="btn btn-danger">Elimina</a>
+              </td>
+            </tr>
+            @endforeach
+
+        </tbody>
+
+    </table>
 </div>
 @endsection
