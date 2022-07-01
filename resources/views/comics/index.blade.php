@@ -2,7 +2,11 @@
 
 @section('content')
 <h1 class="text-center py-2">the Comics</h1>
+<div class="container mb-2">
+    <a href="{{route('comics.create')}}" class="btn btn-success">Aggiungi nuova pasta</a>
+</div>
 <div class="container d-flex justify-content-center">
+
     <table class="table table-striped">
         <thead>
             <tr>
@@ -20,8 +24,13 @@
               <td>{{$comic->type}}</td>
               <td>
                 <a href="{{route('comics.show', $comic)}}" class="btn btn-primary">Mostra</a>
-                <a href="#" class="btn btn-warning">Modifica</a>
-                <a href="#" class="btn btn-danger">Elimina</a>
+                <a href="{{route('comics.edit', $comic)}}" class="btn btn-warning">Modifica</a>
+                <form class="d-inline" action="{{route('comics.destroy', $comic)}}"
+                method="POST">
+                @method('DELETE')
+                @csrf
+                <input type="submit" value="Elimina" class="btn btn-danger">
+                </form>
               </td>
             </tr>
             @endforeach
