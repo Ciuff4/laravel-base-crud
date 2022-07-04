@@ -3,7 +3,7 @@
 @section('content')
 <h1 class="text-center py-2">the Comics</h1>
 <div class="container mb-2">
-    <a href="{{route('comics.create')}}" class="btn btn-success">Aggiungi nuova pasta</a>
+    <a href="{{route('comics.create')}}" class="btn btn-success">Aggiungi nuovo comic</a>
 </div>
 <div class="container d-flex justify-content-center">
 

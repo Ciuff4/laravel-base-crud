@@ -3,9 +3,11 @@
 @section('content')
 
 <div class="container">
-    <form action="{{route('comics.store')}}"
+    <form action="{{route('comics.update', $comic)}}"
     method="POST">
+    @method('PUT')
     @csrf
+
 
         <div class="mb-3">
           <label for="title" class="form-label">Nome del Fumetto</label>

@@ -35,13 +35,11 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
+        $new_comic = new Comic();
         $data= $request->all();
 
-        $new_comic= new Comic();
-            $new_comic->title = $data['title'];
-            $new_comic->type = $data['type'];
-            $new_comic->image = $data['image'];
-            $new_comic->save();
+        $new_comic->fill($data);
+        $new_comic->save();
 
             return redirect()->route('comics.show', $new_comic);
     }
@@ -64,9 +62,9 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comic $comic)
+    public function edit($id)
     {
-        $comics= Comic::all();
+        $comic= Comic::find($id);
         return view('comics.edit', compact('comic'));
     }
 
@@ -82,7 +80,7 @@ class ComicController extends Controller
         $data= $request->all();
         $comic->update($data);
 
-        return redirect()->route('comics.show', $comic->$id);
+        return redirect()->route('comics.show', $comic);
     }
 
     /**
