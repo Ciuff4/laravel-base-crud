@@ -38,7 +38,7 @@ class ComicController extends Controller
         $request->validate(
             [
                 "title"=>"required|max:50|min:3",
-                "type"=>"required|max:30|min:10",
+                "type"=>"required|max:30|min:3",
                 "image"=>"required|max:255|min:10",
             ],
             [
@@ -95,6 +95,24 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
+
+        $request->validate(
+            [
+                "title"=>"required|max:50|min:3",
+                "type"=>"required|max:30|min:3",
+                "image"=>"required|max:255|min:10",
+            ],
+            [
+                'title.required'=>'il campo nome è obbligatorio',
+                'title.max'=>'il campo deve essere lungo massimo :max caratteri',
+                'title.min'=>'il campo deve essere lungo minimo :min caratteri',
+                'type.required'=>'il campo tipo è obbligatorio',
+                'type.min'=>'il campo deve essere lungo minimo :min caratteri',
+                'image.min'=>'il campo deve essere lungo minimo :min caratteri',
+
+            ]
+            );
+        $data= $request->all();
 
         $comic->update($data);
 
