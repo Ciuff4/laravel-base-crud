@@ -29,7 +29,7 @@
           class="form-control @error('title') is-invalid @enderror"
           id="title" name="title"
           placeholder="inserisci il Titolo"
-          value="{{$comic->title}}">
+          value="{{old('title',$comic->title)}}">
           <p>@error('title')
             {{$message}}
           @enderror</p>
@@ -41,7 +41,7 @@
           class="form-control @error('type') is-invalid @enderror"
           id="type" name="type"
           placeholder="Inserisci il Genere"
-          value="{{$comic->type}}">
+          value="{{old('type', $comic->type)}}">
           <p>@error('type')
             {{$message}}
           @enderror</p>
@@ -53,7 +53,7 @@
           class="form-control @error('image') is-invalid @enderror"
           id="image" name="image"
           placeholder="inserisci il percorso dell'immagine"
-          value="{{$comic->image}}">
+          value="{{old('image', $comic->image)}}">
           <p>@error('image')
             {{$message}}
           @enderror</p>
